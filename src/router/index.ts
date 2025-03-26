@@ -1,6 +1,5 @@
+import LayoutIndex from '@/Layout/LayoutIndex.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
 const router = createRouter({
   // 需要改回createWebHistory, 问就是工作
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -8,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: LayoutIndex,
     },
     {
       path: '/about',

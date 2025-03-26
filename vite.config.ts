@@ -5,6 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import IconsResolver from 'unplugin-icons/resolver'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vite.dev/config/
@@ -18,6 +19,9 @@ export default defineConfig({
       resolvers: [
         // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式),组件中免导入
         ElementPlusResolver(),
+        IconsResolver({
+          prefix: 'Icon',
+        }),
       ],
       // 是否在 vue 模板中自动导入
       vueTemplate: true,
@@ -26,7 +30,11 @@ export default defineConfig({
       dts: "auto-imports.d.ts",
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        IconsResolver({
+          enabledCollections: ['ep'],
+        }),
+        ElementPlusResolver()],
     }),
   ],
   base: './',
@@ -36,3 +44,4 @@ export default defineConfig({
     },
   },
 })
+

@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import SideIndex from './side/SideIndex.vue'
+import HeaderIndex from './header/HeaderIndex.vue'
+
+const route = useRoute()
 </script>
 
 <template>
   <div class="common-layout">
     <el-container>
       <el-aside width="250px">
-        <div class="common-aside">
-          <SideIndex />
-        </div>
+        <SideIndex />
       </el-aside>
       <el-container>
         <el-header>
-          <div class="common-header">header</div>
+          <header-index />
         </el-header>
-        <el-main>Main</el-main>
+        <el-main>
+          <router-view :key="route.fullPath" />
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -22,11 +25,11 @@ import SideIndex from './side/SideIndex.vue'
 
 <style lang="scss" scoped>
 .common-layout {
-  height: 100vh;
+  height: calc(100vh - 20px);
 }
 
 .common-aside {
-  height: 100vh;
+  height: calc(100vh - 20px);
   border-right: 1px solid black;
 }
 
